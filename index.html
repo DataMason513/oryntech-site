@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oryntech Solutions</title>
-<meta name="description" content="Oryntech Solutions is a lean human + AI unit delivering managed IT, AI automation, custom builds, and Revive, the customer reactivation and lead-rescue system.">
+<meta name="description" content="Oryntech Solutions is a small senior team, extended by AI, delivering managed IT, AI automation, custom software and Revive, a customer reactivation and lead-rescue system. Ontario, Canada.">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="Oryntech Solutions">
 <meta property="og:description" content="Enterprise capability, delivered by a lean human + AI unit.">
@@ -13,18 +13,24 @@
 <style>
   :root {
     --ink: #0B1020;
+    --ink-2: #0E1428;
     --surface: #131A2E;
     --surface-2: #1A2340;
     --line: #26304A;
+    --line-strong: #344061;
     --text: #E7EAF3;
-    --muted: #8C96AD;
+    --muted: #97A1B8;
+    --dim: #6F7A94;
     --amber: #F2B65A;
-    --measure: 68ch;
+    --amber-ink: #3A2605;
+    --measure: 64ch;
     --gutter: clamp(16px, 5vw, 64px);
-    --font: "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Inter, Roboto, system-ui, -apple-system, Arial, sans-serif;
+    --radius: 12px;
+    --font: "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Inter, Roboto, system-ui, -apple-system, Arial, sans-serif;
+    --font-display: "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Inter, Roboto, system-ui, -apple-system, Arial, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
     margin: 0;
@@ -32,256 +38,259 @@
     color: var(--text);
     font-family: var(--font);
     font-size: 17px;
-    line-height: 1.55;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   a { color: inherit; }
-  a:focus-visible {
-    outline: 2px solid var(--amber);
-    outline-offset: 4px;
-    border-radius: 2px;
-  }
-  .wrap {
-    width: min(100% - 2 * var(--gutter), 1120px);
-    margin-inline: auto;
-  }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; border-radius: 3px; }
+  .wrap { width: min(100% - 2 * var(--gutter), 1120px); margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 650; letter-spacing: -0.025em; line-height: 1.1; margin: 0; }
+  h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); margin-bottom: 14px; max-width: 22ch; }
+  h3 { font-size: 1.2rem; letter-spacing: -0.015em; font-weight: 600; }
+  p { margin: 0; }
+  .lede { max-width: var(--measure); color: var(--muted); font-size: 1.08rem; margin-bottom: 44px; }
+  section { padding: clamp(60px, 8vw, 112px) 0; }
+  .rule-top { border-top: 1px solid var(--line); }
 
-  /* Top bar */
-  .top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 22px 0;
+  /* Header */
+  .site-header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(11, 16, 32, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
   }
-  .mark {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    font-size: 18px;
-  }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 68px; }
+  .mark { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 650; font-size: 17px; letter-spacing: -0.01em; }
   .mark svg { width: 28px; height: 28px; flex: none; }
-  .top nav { display: flex; gap: 28px; }
-  .top nav a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 15px;
+  .nav { display: flex; align-items: center; gap: 28px; }
+  .nav a { text-decoration: none; color: var(--muted); font-size: 15px; }
+  .nav a:hover { color: var(--text); }
+  .nav .cta { color: var(--ink); background: var(--text); padding: 9px 16px; border-radius: 6px; font-weight: 600; }
+  .nav .cta:hover { background: #fff; color: var(--ink); }
+  .menu { display: none; }
+  @media (max-width: 720px) {
+    .nav { display: none; }
+    .menu { display: block; position: relative; }
+    .menu summary { list-style: none; cursor: pointer; color: var(--text); font-size: 15px; padding: 8px 0; }
+    .menu summary::-webkit-details-marker { display: none; }
+    .menu[open] summary { color: var(--amber); }
+    .menu .sheet {
+      position: absolute; right: 0; top: calc(100% + 10px);
+      background: var(--surface); border: 1px solid var(--line-strong); border-radius: 10px;
+      min-width: 220px; padding: 8px; display: grid;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+    .menu .sheet a { text-decoration: none; padding: 11px 14px; border-radius: 6px; color: var(--text); }
+    .menu .sheet a:hover { background: var(--surface-2); }
   }
-  .top nav a:hover { color: var(--text); }
-  @media (max-width: 600px) { .top nav { display: none; } }
 
   /* Hero */
-  .hero {
-    padding: clamp(56px, 12vw, 150px) 0 clamp(56px, 9vw, 120px);
-    border-bottom: 1px solid var(--line);
-  }
+  .hero { padding: clamp(64px, 11vw, 140px) 0 clamp(48px, 7vw, 88px); }
   .hero h1 {
-    margin: 0;
-    font-size: clamp(2.4rem, 7.2vw, 5.6rem);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    font-weight: 650;
-    max-width: 16ch;
-    text-wrap: balance;
+    font-size: clamp(2.5rem, 7vw, 5.4rem);
+    line-height: 1.02; letter-spacing: -0.035em;
+    max-width: 16ch; text-wrap: balance;
   }
   .hero h1 span {
-    display: block;
-    color: var(--muted);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    font-size: 0.56em;
-    margin-top: 0.35em;
-    max-width: 30ch;
+    display: block; color: var(--muted); font-weight: 400; letter-spacing: -0.02em;
+    font-size: 0.56em; margin-top: 0.4em; max-width: 30ch;
   }
-  .hero p {
-    max-width: var(--measure);
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    margin: 36px 0 0;
-  }
-  .hero .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 28px;
-    align-items: center;
-    margin-top: 40px;
-  }
+  .hero .intro { max-width: var(--measure); font-size: clamp(1.05rem, 1.6vw, 1.22rem); margin-top: 36px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; margin-top: 36px; }
   .btn {
-    display: inline-block;
-    padding: 14px 22px;
-    background: var(--text);
-    color: var(--ink);
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 6px;
+    display: inline-block; padding: 14px 22px; border-radius: 7px;
+    background: var(--text); color: var(--ink); text-decoration: none; font-weight: 600;
   }
   .btn:hover { background: #fff; }
-  .link {
-    color: var(--muted);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-color: var(--line);
-  }
+  .btn.amber { background: var(--amber); color: var(--amber-ink); }
+  .btn.amber:hover { background: #F7C777; }
+  .link { color: var(--muted); text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--line-strong); }
   .link:hover { color: var(--text); text-decoration-color: var(--text); }
 
-  /* Sections */
-  section { padding: clamp(56px, 8vw, 110px) 0; }
-  h2 {
-    margin: 0 0 14px;
-    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    font-weight: 650;
+  /* Engagement facts: the above-the-fold contract */
+  .facts {
+    margin-top: clamp(48px, 7vw, 80px);
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
-  .lede {
-    max-width: var(--measure);
-    color: var(--muted);
-    margin: 0 0 48px;
-    font-size: 1.08rem;
+  .facts > div { padding: 26px 28px 26px 0; }
+  .facts > div + div { border-left: 1px solid var(--line); padding-left: 28px; }
+  .facts strong { display: block; font-weight: 600; margin-bottom: 4px; }
+  .facts span { color: var(--muted); font-size: 0.98rem; }
+  @media (max-width: 760px) {
+    .facts { grid-template-columns: 1fr; }
+    .facts > div { padding: 18px 0; }
+    .facts > div + div { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
   }
 
-  /* Services: a ruled list, not cards */
-  .services { border-bottom: 1px solid var(--line); }
+  /* Services */
   .svc { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
   .svc li {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: 16px 48px;
-    padding: 34px 0;
-    border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 0.9fr);
+    gap: 16px 48px; padding: 36px 0; border-bottom: 1px solid var(--line);
   }
-  .svc h3 {
-    margin: 0;
-    font-size: 1.35rem;
-    letter-spacing: -0.015em;
-    font-weight: 600;
+  .svc h3 { font-size: 1.35rem; }
+  .svc .who { color: var(--muted); font-size: 0.98rem; margin-top: 8px; max-width: 30ch; }
+  .svc .what p { color: var(--muted); max-width: 58ch; }
+  .svc .what p + p { margin-top: 12px; color: var(--text); }
+  .svc dl { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .svc dt { color: var(--dim); font-size: 0.86rem; }
+  .svc dd { margin: 0 0 4px; font-size: 0.98rem; }
+  @media (max-width: 860px) {
+    .svc li { grid-template-columns: 1fr; gap: 18px; padding: 30px 0; }
+    .svc dl { grid-template-columns: 1fr 1fr; gap: 14px 24px; }
   }
-  .svc p { margin: 0; color: var(--muted); max-width: 60ch; }
-  .svc p + p { margin-top: 12px; color: var(--text); }
-  @media (max-width: 720px) {
-    .svc li { grid-template-columns: 1fr; padding: 28px 0; }
-  }
+  @media (max-width: 480px) { .svc dl { grid-template-columns: 1fr; } }
 
-  /* Revive: the one bold moment */
-  .revive { padding: clamp(40px, 6vw, 80px) 0 clamp(56px, 8vw, 110px); }
+  /* Revive */
+  .revive { background: var(--ink-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .revive .head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px 64px; align-items: end; margin-bottom: 48px; }
+  .revive .name { display: inline-flex; align-items: center; gap: 10px; color: var(--amber); font-weight: 600; margin-bottom: 16px; }
+  .revive .name i { width: 10px; height: 10px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(242, 182, 90, 0.18); }
+  .revive h2 { font-size: clamp(1.9rem, 4vw, 3rem); max-width: 18ch; }
+  .revive .head p { color: var(--muted); max-width: 48ch; }
+  .revive .head p strong { color: var(--text); font-weight: 600; }
+  @media (max-width: 860px) { .revive .head { grid-template-columns: 1fr; } }
+
   .panel {
-    position: relative;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     overflow: hidden;
-    background:
-      radial-gradient(900px 420px at 85% 0%, rgba(242, 182, 90, 0.16), transparent 60%),
-      var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: clamp(32px, 5vw, 72px);
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(32px, 5vw, 72px);
-    align-items: center;
   }
-  .panel::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--amber), transparent 70%);
-  }
-  .panel .name {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--amber);
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 18px;
-  }
-  .panel .name i {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--amber);
-    box-shadow: 0 0 0 4px rgba(242, 182, 90, 0.18);
-  }
-  .panel h2 { font-size: clamp(1.9rem, 4vw, 3rem); max-width: 16ch; }
-  .panel p { color: var(--muted); max-width: 52ch; margin: 0 0 16px; }
-  .panel p strong { color: var(--text); font-weight: 600; }
-  .panel ul { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-  .panel li { padding-left: 22px; position: relative; color: var(--text); }
-  .panel li::before {
-    content: "";
-    position: absolute; left: 0; top: 0.62em;
-    width: 10px; height: 2px; background: var(--amber);
-  }
-  .panel .note { margin-top: 22px; }
-  .diagram { width: 100%; height: auto; display: block; }
-  .diagram text { font-family: var(--font); font-size: 13px; fill: var(--text); }
-  .diagram .dim { fill: var(--muted); }
-  .diagram .lane { stroke: var(--line); stroke-width: 1.5; fill: none; }
-  .diagram .pulse { stroke: var(--amber); stroke-width: 2; fill: none; stroke-dasharray: 6 8; }
-  .diagram .node { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.5; }
-  .diagram .ring { fill: none; stroke: var(--amber); stroke-width: 2; }
-  .diagram .hot { fill: var(--amber); }
-  .diagram .on-hot { fill: var(--ink); font-weight: 600; }
-  @media (prefers-reduced-motion: no-preference) {
-    .diagram .pulse { animation: flow 2.4s linear infinite; }
-    @keyframes flow { to { stroke-dashoffset: -28; } }
-  }
-  @media (max-width: 880px) {
+  .panel > div { padding: clamp(28px, 4vw, 48px); }
+  .panel > div + div { border-left: 1px solid var(--line); background: var(--ink-2); }
+  @media (max-width: 860px) {
     .panel { grid-template-columns: 1fr; }
+    .panel > div + div { border-left: 0; border-top: 1px solid var(--line); }
   }
 
-  /* How we work */
-  .how { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .how .cols {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 40px 48px;
+  /* Timeline */
+  .tl-title { font-size: 0.95rem; color: var(--muted); margin-bottom: 22px; }
+  .track + .track { margin-top: 30px; }
+  .track h3 { font-size: 1.02rem; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .track h3::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+  .track ol { list-style: none; margin: 0; padding: 0 0 0 3px; border-left: 2px solid var(--line-strong); display: grid; gap: 14px; }
+  .track li { position: relative; padding-left: 20px; display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 12px; font-size: 0.98rem; }
+  .track li::before { content: ""; position: absolute; left: -7px; top: 0.55em; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--amber); }
+  .track li.stop::before { background: var(--amber); }
+  .track time, .track .when { color: var(--amber); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .track li span { color: var(--muted); }
+  .track li.stop span { color: var(--text); }
+  @media (max-width: 480px) { .track li { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Message mockup */
+  .phone { display: grid; gap: 12px; }
+  .bubble {
+    max-width: 92%; padding: 12px 15px; border-radius: 14px; font-size: 0.95rem; line-height: 1.45;
+    background: var(--surface-2); border: 1px solid var(--line-strong);
   }
-  .how h3 { margin: 0 0 8px; font-size: 1.1rem; font-weight: 600; }
-  .how p { margin: 0; color: var(--muted); }
-  @media (max-width: 720px) { .how .cols { grid-template-columns: 1fr; gap: 28px; } }
+  .bubble.out { background: var(--amber); color: var(--amber-ink); border-color: transparent; border-bottom-left-radius: 4px; }
+  .bubble.in { justify-self: end; border-bottom-right-radius: 4px; }
+  .bubble small { display: block; margin-top: 6px; opacity: 0.8; font-size: 0.82rem; }
+  .meta { color: var(--dim); font-size: 0.82rem; }
+  .meta.right { text-align: right; }
+  .approve {
+    margin-top: 6px; border: 1px dashed var(--line-strong); border-radius: 10px; padding: 14px 15px;
+    font-size: 0.92rem; color: var(--muted);
+  }
+  .approve strong { color: var(--text); display: block; margin-bottom: 8px; font-weight: 600; }
+  .approve .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .approve .btns span { border: 1px solid var(--line-strong); border-radius: 6px; padding: 5px 11px; color: var(--text); font-size: 0.86rem; }
+  .approve .btns span:first-child { background: var(--text); color: var(--ink); border-color: transparent; }
+
+  /* Never / pilot */
+  .twin { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+  .card { border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 3vw, 34px); background: var(--surface); }
+  .card h3 { margin-bottom: 14px; }
+  .card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; color: var(--muted); font-size: 0.98rem; }
+  .card li { padding-left: 22px; position: relative; }
+  .card li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 10px; height: 2px; background: var(--amber); }
+  .card.never li::before { background: var(--dim); width: 10px; height: 10px; top: 0.42em; border-radius: 50%; border: 2px solid var(--dim); background: transparent; box-sizing: border-box; }
+  .card p { color: var(--muted); font-size: 0.98rem; }
+  .card .foot { margin-top: 16px; color: var(--text); }
+  @media (max-width: 760px) { .twin { grid-template-columns: 1fr; } }
+
+  /* Rules */
+  .rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 48px; }
+  .rules h3 { font-size: 1.08rem; margin-bottom: 8px; }
+  .rules p { color: var(--muted); font-size: 0.98rem; }
+  @media (max-width: 860px) { .rules { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .rules { grid-template-columns: 1fr; gap: 26px; } }
+
+  /* FAQ */
+  .faq { max-width: 78ch; border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary {
+    cursor: pointer; list-style: none; padding: 20px 44px 20px 0; position: relative;
+    font-weight: 600; font-size: 1.05rem;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: ""; position: absolute; right: 6px; top: 50%; width: 10px; height: 10px;
+    border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+    transform: translateY(-70%) rotate(45deg); transition: transform 0.2s ease;
+  }
+  .faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+  .faq details p { color: var(--muted); padding: 0 0 22px; max-width: 70ch; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px 64px; }
+  .about p { color: var(--muted); max-width: 56ch; }
+  .about p + p { margin-top: 16px; }
+  .about p strong { color: var(--text); font-weight: 600; }
+  @media (max-width: 860px) { .about { grid-template-columns: 1fr; } }
 
   /* Contact */
-  .contact p { max-width: var(--measure); color: var(--muted); margin: 0 0 28px; }
+  .contact { background: var(--ink-2); border-top: 1px solid var(--line); }
+  .contact .grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px 64px; align-items: start; }
+  .contact p { color: var(--muted); max-width: var(--measure); }
   .contact .mail {
-    display: inline-block;
-    font-size: clamp(1.4rem, 3.6vw, 2.4rem);
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 2px solid var(--amber);
-    padding-bottom: 4px;
+    display: inline-block; margin-top: 26px;
+    font-family: var(--font-display); font-size: clamp(1.5rem, 3.6vw, 2.4rem); letter-spacing: -0.02em; font-weight: 600;
+    text-decoration: none; border-bottom: 2px solid var(--amber); padding-bottom: 4px;
   }
   .contact .mail:hover { color: var(--amber); }
-  .contact .note { margin-top: 20px; font-size: 0.95rem; }
+  .contact .steps { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; background: var(--surface); }
+  .contact .steps h3 { font-size: 1rem; margin-bottom: 14px; }
+  .contact .steps ol { margin: 0; padding-left: 20px; color: var(--muted); display: grid; gap: 8px; font-size: 0.98rem; }
+  .contact .steps li::marker { color: var(--amber); font-weight: 600; }
+  @media (max-width: 860px) { .contact .grid { grid-template-columns: 1fr; } }
 
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 32px 0 44px;
-    color: var(--muted);
-    font-size: 0.95rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 32px;
-    justify-content: space-between;
-  }
-  footer p { margin: 0; }
+  footer { border-top: 1px solid var(--line); padding: 36px 0 48px; color: var(--muted); font-size: 0.93rem; }
+  footer .row { display: flex; flex-wrap: wrap; gap: 14px 36px; justify-content: space-between; align-items: center; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
+  footer nav a { text-decoration: none; color: var(--muted); }
+  footer nav a:hover { color: var(--text); }
+  footer .privacy { margin-top: 18px; color: var(--dim); max-width: 80ch; font-size: 0.88rem; }
 </style>
 </head>
 <body>
 
-<header class="wrap">
-  <div class="top">
+<header class="site-header">
+  <div class="wrap top">
     <a class="mark" href="#top" aria-label="Oryntech Solutions, home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#131A2E"/><circle cx="16" cy="16" r="8" fill="none" stroke="#F2B65A" stroke-width="3"/><circle cx="23" cy="9" r="3" fill="#E7EAF3"/></svg>
       Oryntech Solutions
     </a>
-    <nav aria-label="Sections">
+    <nav class="nav" aria-label="Sections">
       <a href="#services">Services</a>
       <a href="#revive">Revive</a>
       <a href="#how">How we work</a>
-      <a href="#contact">Contact</a>
+      <a href="#faq">Questions</a>
+      <a class="cta" href="#contact">Book a scoping call</a>
     </nav>
+    <details class="menu">
+      <summary aria-label="Open menu">Menu</summary>
+      <nav class="sheet" aria-label="Sections">
+        <a href="#services">Services</a>
+        <a href="#revive">Revive</a>
+        <a href="#how">How we work</a>
+        <a href="#faq">Questions</a>
+        <a href="#contact">Book a scoping call</a>
+      </nav>
+    </details>
   </div>
 </header>
 
@@ -289,39 +298,65 @@
   <section class="hero">
     <div class="wrap">
       <h1>Enterprise capability, <span>delivered by a lean human + AI unit.</span></h1>
-      <p>Oryntech Solutions runs your IT, automates the work that eats your week, and builds the software you can't buy off the shelf. A small senior team, extended by AI, so you get the depth of a large firm without the overhead.</p>
+      <p class="intro">Oryntech Solutions runs your IT, automates the work that eats your week, and builds the software you can't buy off the shelf. A small senior team, extended by AI, for owner-led businesses that want the depth of a large firm without the overhead or the lock-in.</p>
       <div class="actions">
-        <a class="btn" href="#contact">Start a conversation</a>
-        <a class="link" href="#revive">See Revive, our reactivation system</a>
+        <a class="btn" href="#contact">Book a free scoping call</a>
+        <a class="link" href="#revive">See how Revive wins customers back</a>
+      </div>
+      <div class="facts" aria-label="How an engagement starts">
+        <div><strong>A free scoping call first.</strong><span>Forty-five minutes. You leave with a written summary of what we would do, whether or not you hire us.</span></div>
+        <div><strong>A fixed quote before any work.</strong><span>Price, scope and delivery date in writing. Changes are agreed before they are billed.</span></div>
+        <div><strong>You own everything we build.</strong><span>Code, accounts, documentation and data stay in your name. Leaving is a handover, not a negotiation.</span></div>
       </div>
     </div>
   </section>
 
-  <section class="services" id="services">
+  <section id="services">
     <div class="wrap">
       <h2>What we do</h2>
-      <p class="lede">Three services, one accountable team. Start with one and add the others as you grow.</p>
+      <p class="lede">Three services, one accountable team. Most owners start with the one that hurts most and add the others as trust builds.</p>
       <ul class="svc">
         <li>
-          <h3>Managed IT</h3>
           <div>
-            <p>Devices, accounts, email, backups, security and the help desk. Monitored and patched, with a human who answers when something breaks.</p>
-            <p>Fixed monthly scope. No surprise tickets.</p>
+            <h3>Managed IT</h3>
+            <p class="who">For businesses of five to fifty people who want IT to simply work.</p>
           </div>
+          <div class="what">
+            <p>Devices, accounts, email, backups, security and the help desk. Monitored and patched, with a person who picks up when something breaks and explains it in plain language.</p>
+            <p>Fixed monthly fee per person. Month to month. No surprise tickets.</p>
+          </div>
+          <dl>
+            <div><dt>Response</dt><dd>Acknowledged within one business hour; outages worked until resolved</dd></div>
+            <div><dt>Includes</dt><dd>Onboarding, documentation, quarterly review</dd></div>
+          </dl>
         </li>
         <li>
-          <h3>AI Automation</h3>
           <div>
-            <p>We map the repetitive work in your business, then wire it up: intake, follow-ups, reporting, scheduling, document handling. AI drafts and routes; people approve what matters.</p>
+            <h3>AI Automation</h3>
+            <p class="who">For teams drowning in follow-ups, intake, reporting and copy-paste.</p>
+          </div>
+          <div class="what">
+            <p>We map the repetitive work in your business and wire it up: lead intake, follow-ups, scheduling, reporting, document handling. AI drafts, sorts and routes. A person approves anything that touches your customers or your money.</p>
             <p>Built on the tools you already pay for wherever possible.</p>
           </div>
+          <dl>
+            <div><dt>First step</dt><dd>A one-week process map with the three automations worth building first</dd></div>
+            <div><dt>Delivery</dt><dd>Weeks, not months; every quote carries a date</dd></div>
+          </dl>
         </li>
         <li>
-          <h3>Custom Builds</h3>
           <div>
-            <p>Internal tools, integrations, dashboards and client-facing apps. Full stack, from the database to the screen, with tests and documentation so it keeps working after we leave.</p>
-            <p>You own the code and the data.</p>
+            <h3>Custom Builds</h3>
+            <p class="who">For the tool you keep wishing existed.</p>
           </div>
+          <div class="what">
+            <p>Internal tools, integrations, dashboards and client-facing apps. Full stack, from the database to the screen, with tests and documentation so it keeps working after we leave.</p>
+            <p>Fixed-price quotes. Weekly progress you can see.</p>
+          </div>
+          <dl>
+            <div><dt>You own</dt><dd>The code, the repository and the hosting account</dd></div>
+            <div><dt>Handover</dt><dd>Written runbook and a recorded walkthrough</dd></div>
+          </dl>
         </li>
       </ul>
     </div>
@@ -329,79 +364,171 @@
 
   <section class="revive" id="revive">
     <div class="wrap">
-      <div class="panel">
+      <div class="head">
         <div>
           <div class="name"><i aria-hidden="true"></i>Revive</div>
           <h2>Win back lost customers and rescue new leads, automatically.</h2>
-          <p>Every business has two leaks: the customers who quietly stopped coming, and the enquiries nobody followed up. <strong>Revive plugs both.</strong> It reads your customer records, works out who can be contacted and how, and runs the follow-up for you.</p>
-          <ul>
-            <li>Former customers get a short, personal win-back sequence with a real offer.</li>
-            <li>New enquiries get an instant reply and timed follow-ups, including a text back on missed calls.</li>
-            <li>Replies are read and answered. Anyone ready to come back is booked or handed to you.</li>
-            <li>Consent, opt-outs and sending windows are enforced on every message, so it stays compliant.</li>
-          </ul>
-          <p class="note">Runs inside your existing CRM. Priced per client, with a pilot first.</p>
         </div>
-        <svg class="diagram" viewBox="0 0 440 300" role="img" aria-labelledby="dg-title dg-desc">
-          <title id="dg-title">How Revive works</title>
-          <desc id="dg-desc">Two inputs, lost customers and new leads, flow through Revive's message, reply and booking steps and come out as customers back in the door.</desc>
-          <rect class="node" x="10" y="48" width="130" height="44" rx="8"/>
-          <text x="75" y="75" text-anchor="middle">Lost customers</text>
-          <rect class="node" x="10" y="208" width="130" height="44" rx="8"/>
-          <text x="75" y="235" text-anchor="middle">New leads</text>
-          <path class="lane" d="M140 70 C 200 70, 200 150, 250 150"/>
-          <path class="lane" d="M140 230 C 200 230, 200 150, 250 150"/>
-          <path class="pulse" d="M140 70 C 200 70, 200 150, 250 150"/>
-          <path class="pulse" d="M140 230 C 200 230, 200 150, 250 150"/>
-          <circle cx="250" cy="150" r="46" class="node"/>
-          <circle cx="250" cy="150" r="46" class="ring"/>
-          <text x="250" y="138" text-anchor="middle">message</text>
-          <text x="250" y="156" text-anchor="middle" class="dim">reply</text>
-          <text x="250" y="174" text-anchor="middle" class="dim">book</text>
-          <path class="lane" d="M296 150 L 330 150"/>
-          <path class="pulse" d="M296 150 L 330 150"/>
-          <rect x="330" y="128" width="100" height="44" rx="8" class="hot"/>
-          <text x="380" y="155" text-anchor="middle" class="on-hot">Back in</text>
-          <text x="250" y="262" text-anchor="middle" class="dim">consent checked and opt-outs honoured at every step</text>
-        </svg>
+        <p>Every local business has two leaks: the customers who quietly stopped coming, and the enquiries nobody answered in time. <strong>Revive plugs both.</strong> It reads your customer records, works out who may be contacted and how, runs the follow-up, and hands you the people who are ready to come back.</p>
+      </div>
+
+      <div class="panel">
+        <div>
+          <p class="tl-title">Two sequences, each with a fixed end. Days count from the trigger.</p>
+          <div class="track">
+            <h3>A customer who has gone quiet</h3>
+            <ol>
+              <li><time>Day 0</time><span>A short personal check-in from your business. No offer, no pressure.</span></li>
+              <li><time>Day 3</time><span>A reason to come back: what's new, what they were part of.</span></li>
+              <li><time>Day 7</time><span>One clear offer with a date on it.</span></li>
+              <li><time>Day 12</time><span>A last note, and the door stays open.</span></li>
+              <li class="stop"><span class="when">Then</span><span>We stop. Any reply pauses the sequence; STOP ends it on every channel.</span></li>
+            </ol>
+          </div>
+          <div class="track">
+            <h3>A new enquiry or a missed call</h3>
+            <ol>
+              <li><time>Minute 1</time><span>An instant reply, or a text back on a missed call, in your name.</span></li>
+              <li><time>Day 1 to 5</time><span>Timed follow-ups until they answer or book.</span></li>
+              <li class="stop"><span class="when">Then</span><span>We stop. Anyone who replies gets a person, not another automation.</span></li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="phone" aria-label="Example conversation">
+            <p class="meta">Sent from your business number, inside your sending hours</p>
+            <div class="bubble out">Hi Sam, it's Jordan at the studio. We noticed you haven't been in for a while and wanted to check in. Everything okay?<small>Reply STOP to opt out.</small></div>
+            <p class="meta right">Customer, twenty minutes later</p>
+            <div class="bubble in">Hey! Work has been brutal. Is the Tuesday evening session still running?</div>
+            <div class="approve">
+              <strong>Reply drafted, waiting for your approval</strong>
+              "Still running, 7 pm. Want me to hold you a spot this week?"
+              <div class="btns"><span>Approve</span><span>Edit</span><span>Stop</span></div>
+            </div>
+            <p class="meta">A person approves every reply before it goes out.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="twin">
+        <div class="card never">
+          <h3>What Revive never does</h3>
+          <ul>
+            <li>Message anyone without a consent basis on record, and it checks the Canadian anti-spam rules before every send.</li>
+            <li>Contact a minor. Guardians only, always.</li>
+            <li>Keep going after a STOP, an unsubscribe or a do-not-contact flag, on any channel.</li>
+            <li>Send outside your quiet hours, or more than the daily cap you set.</li>
+            <li>Pretend to be a person. Messages go out in your name; replies are reviewed by one.</li>
+            <li>Use bought lists. It works only with people who already chose you once.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>How a pilot is scoped</h3>
+          <ul>
+            <li>One location, one list, one channel to start.</li>
+            <li>Thirty days, with a daily message cap.</li>
+            <li>You approve every template before the first send.</li>
+            <li>Stop rules and the hand-off to your team written down up front.</li>
+            <li>We report booked appointments and returned customers. Replies are not results.</li>
+          </ul>
+          <p class="foot">Priced per location, with the pilot first. If it doesn't earn its keep, you stop at day thirty with nothing to unwind.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="how" id="how">
+  <section id="how">
     <div class="wrap">
       <h2>How we work</h2>
-      <p class="lede">Lean on purpose. The AI does the volume; the humans own the judgement and the outcome.</p>
-      <div class="cols">
-        <div>
-          <h3>One point of contact</h3>
-          <p>You deal with a person who knows your business, not a queue.</p>
-        </div>
-        <div>
-          <h3>Fixed scope, plain pricing</h3>
-          <p>Monthly retainers and quoted builds. Changes are agreed before they are billed.</p>
-        </div>
-        <div>
-          <h3>Your data stays yours</h3>
-          <p>We work inside your systems. Nothing is copied out, sold or used to train anything.</p>
-        </div>
+      <p class="lede">Operating rules, not values. These apply to every engagement, and you can hold us to them.</p>
+      <div class="rules">
+        <div><h3>One person owns your account</h3><p>You deal with someone who knows your business and your systems, not a queue or a ticket number.</p></div>
+        <div><h3>AI does the volume, people own the judgement</h3><p>Automation drafts, sorts, monitors and routes. A person approves any action that touches your customers, your data or your money.</p></div>
+        <div><h3>Fixed scope, plain pricing</h3><p>Monthly retainers and fixed-price builds. Nothing is billed that wasn't agreed first, in writing.</p></div>
+        <div><h3>Your data stays yours</h3><p>We work inside your systems. Nothing is copied out, sold, or used to train anything. Access is removed the day an engagement ends.</p></div>
+        <div><h3>Documentation is part of the job</h3><p>Every build ships with a runbook and a walkthrough. Every retainer keeps an up-to-date map of your systems that you can hand to anyone.</p></div>
+        <div><h3>We say no when we should</h3><p>If an automation would annoy your customers, break a rule, or cost more than it saves, we tell you before you spend a dollar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule-top" id="faq">
+    <div class="wrap">
+      <h2>Questions owners ask first</h2>
+      <p class="lede">Straight answers. If yours isn't here, it's a good reason to book the call.</p>
+      <div class="faq">
+        <details>
+          <summary>Are we too small for this?</summary>
+          <p>Probably not. The work pays off fastest in businesses of five to fifty people, where one owner or manager is still doing the follow-ups and the IT themselves. If you're smaller than that, the scoping call will say so and point you at the two or three things worth doing on your own.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>Managed IT is a fixed monthly fee per person. Automations and custom builds are quoted as a fixed price with a delivery date before any work starts. Revive is priced per location, with a paid thirty-day pilot first. You will see every number in writing before you commit to anything.</p>
+        </details>
+        <details>
+          <summary>How long does a build take?</summary>
+          <p>Most automations ship in weeks, not months. Larger custom builds are broken into stages you can use as they land. The quote carries the date, and you see progress weekly.</p>
+        </details>
+        <details>
+          <summary>What does the AI actually do, and what does a person do?</summary>
+          <p>The AI reads, drafts, classifies and routes: it writes the first draft of a reply, sorts the inbox, watches the monitors, fills in the report. A person approves anything that goes to a customer, changes your data or spends your money, and a person is who you talk to.</p>
+        </details>
+        <details>
+          <summary>What do we own when you leave?</summary>
+          <p>Everything. The code and its repository, the accounts and licences, the documentation, and the data. Access is handed over on the last day, and we walk your next provider through it if you want us to.</p>
+        </details>
+        <details>
+          <summary>What if it doesn't work?</summary>
+          <p>Pilots and first stages are scoped so you can stop at the end with nothing to unwind. Retainers are month to month. If we think something won't pay for itself, we say so before you spend on it.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule-top" id="about">
+    <div class="wrap about">
+      <h2>Small on purpose</h2>
+      <div>
+        <p>Large IT firms sell you a help desk and a quarterly review. Freelancers sell you their evenings. <strong>Oryntech Solutions is built to be the third option:</strong> senior people who have run infrastructure, shipped software and automated real operations, kept small enough that the person who scoped your work is the person who does it.</p>
+        <p>AI is what lets a small team carry an enterprise workload. We use it the way we'd want it used on our own business: for drafts, monitoring, sorting and the long tail of repetitive work, with a person signing off on anything that matters. Based in Ontario, Canada, working with owner-led businesses across the province and remotely beyond it.</p>
       </div>
     </div>
   </section>
 
   <section class="contact" id="contact">
-    <div class="wrap">
-      <h2>Talk to us</h2>
-      <p>Tell us what is slowing you down. We reply within one business day with a straight answer on whether we can help and what it would cost.</p>
-      <a class="mail" href="mailto:EMAIL_HERE">Email us</a>
-      <p class="note">Based in Ontario, Canada.</p>
+    <div class="wrap grid">
+      <div>
+        <h2>Book a scoping call</h2>
+        <p>Tell us what is slowing you down. We reply within one business day with a straight answer on whether we can help, and if we can, a time for the call.</p>
+        <a class="mail" href="mailto:EMAIL_HERE">Email us</a>
+      </div>
+      <div class="steps">
+        <h3>What happens next</h3>
+        <ol>
+          <li>You get a reply within one business day.</li>
+          <li>A forty-five minute call, free, about your business before our services.</li>
+          <li>A written summary of what we'd do, in what order, and what it would cost.</li>
+          <li>You decide. No follow-up sequence, no pressure.</li>
+        </ol>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="wrap">
-  <p>An Habeyna company.</p>
-  <p>Oryntech Solutions</p>
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>An Habeyna company.</p>
+      <nav aria-label="Footer">
+        <a href="#services">Services</a>
+        <a href="#revive">Revive</a>
+        <a href="#how">How we work</a>
+        <a href="#faq">Questions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="privacy">Oryntech Solutions, Ontario, Canada. This site sets no cookies, runs no scripts and loads nothing from third parties. Nothing about your visit is collected.</p>
+  </div>
 </footer>
 
 </body>
