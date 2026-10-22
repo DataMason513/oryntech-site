@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oryntech Solutions</title>
+<meta name="description" content="Oryntech Solutions is a lean human + AI unit delivering managed IT, AI automation, custom builds, and Revive, the customer reactivation and lead-rescue system.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Oryntech Solutions">
+<meta property="og:description" content="Enterprise capability, delivered by a lean human + AI unit.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1020'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23F2B65A' stroke-width='3'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%23E7EAF3'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --ink: #0B1020;
+    --surface: #131A2E;
+    --surface-2: #1A2340;
+    --line: #26304A;
+    --text: #E7EAF3;
+    --muted: #8C96AD;
+    --amber: #F2B65A;
+    --measure: 68ch;
+    --gutter: clamp(16px, 5vw, 64px);
+    --font: "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Inter, Roboto, system-ui, -apple-system, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; }
+  a:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+  .wrap {
+    width: min(100% - 2 * var(--gutter), 1120px);
+    margin-inline: auto;
+  }
+
+  /* Top bar */
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 0;
+  }
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-size: 18px;
+  }
+  .mark svg { width: 28px; height: 28px; flex: none; }
+  .top nav { display: flex; gap: 28px; }
+  .top nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .top nav a:hover { color: var(--text); }
+  @media (max-width: 600px) { .top nav { display: none; } }
+
+  /* Hero */
+  .hero {
+    padding: clamp(56px, 12vw, 150px) 0 clamp(56px, 9vw, 120px);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(2.4rem, 7.2vw, 5.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 650;
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+  .hero h1 span {
+    display: block;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    font-size: 0.56em;
+    margin-top: 0.35em;
+    max-width: 30ch;
+  }
+  .hero p {
+    max-width: var(--measure);
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    margin: 36px 0 0;
+  }
+  .hero .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 22px;
+    background: var(--text);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+  }
+  .btn:hover { background: #fff; }
+  .link {
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--line);
+  }
+  .link:hover { color: var(--text); text-decoration-color: var(--text); }
+
+  /* Sections */
+  section { padding: clamp(56px, 8vw, 110px) 0; }
+  h2 {
+    margin: 0 0 14px;
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    font-weight: 650;
+  }
+  .lede {
+    max-width: var(--measure);
+    color: var(--muted);
+    margin: 0 0 48px;
+    font-size: 1.08rem;
+  }
+
+  /* Services: a ruled list, not cards */
+  .services { border-bottom: 1px solid var(--line); }
+  .svc { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .svc li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 16px 48px;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+  }
+  .svc p { margin: 0; color: var(--muted); max-width: 60ch; }
+  .svc p + p { margin-top: 12px; color: var(--text); }
+  @media (max-width: 720px) {
+    .svc li { grid-template-columns: 1fr; padding: 28px 0; }
+  }
+
+  /* Revive: the one bold moment */
+  .revive { padding: clamp(40px, 6vw, 80px) 0 clamp(56px, 8vw, 110px); }
+  .panel {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(900px 420px at 85% 0%, rgba(242, 182, 90, 0.16), transparent 60%),
+      var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: clamp(32px, 5vw, 72px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), transparent 70%);
+  }
+  .panel .name {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--amber);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+  .panel .name i {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(242, 182, 90, 0.18);
+  }
+  .panel h2 { font-size: clamp(1.9rem, 4vw, 3rem); max-width: 16ch; }
+  .panel p { color: var(--muted); max-width: 52ch; margin: 0 0 16px; }
+  .panel p strong { color: var(--text); font-weight: 600; }
+  .panel ul { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .panel li { padding-left: 22px; position: relative; color: var(--text); }
+  .panel li::before {
+    content: "";
+    position: absolute; left: 0; top: 0.62em;
+    width: 10px; height: 2px; background: var(--amber);
+  }
+  .panel .note { margin-top: 22px; }
+  .diagram { width: 100%; height: auto; display: block; }
+  .diagram text { font-family: var(--font); font-size: 13px; fill: var(--text); }
+  .diagram .dim { fill: var(--muted); }
+  .diagram .lane { stroke: var(--line); stroke-width: 1.5; fill: none; }
+  .diagram .pulse { stroke: var(--amber); stroke-width: 2; fill: none; stroke-dasharray: 6 8; }
+  .diagram .node { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.5; }
+  .diagram .ring { fill: none; stroke: var(--amber); stroke-width: 2; }
+  .diagram .hot { fill: var(--amber); }
+  .diagram .on-hot { fill: var(--ink); font-weight: 600; }
+  @media (prefers-reduced-motion: no-preference) {
+    .diagram .pulse { animation: flow 2.4s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -28; } }
+  }
+  @media (max-width: 880px) {
+    .panel { grid-template-columns: 1fr; }
+  }
+
+  /* How we work */
+  .how { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .how .cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px 48px;
+  }
+  .how h3 { margin: 0 0 8px; font-size: 1.1rem; font-weight: 600; }
+  .how p { margin: 0; color: var(--muted); }
+  @media (max-width: 720px) { .how .cols { grid-template-columns: 1fr; gap: 28px; } }
+
+  /* Contact */
+  .contact p { max-width: var(--measure); color: var(--muted); margin: 0 0 28px; }
+  .contact .mail {
+    display: inline-block;
+    font-size: clamp(1.4rem, 3.6vw, 2.4rem);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid var(--amber);
+    padding-bottom: 4px;
+  }
+  .contact .mail:hover { color: var(--amber); }
+  .contact .note { margin-top: 20px; font-size: 0.95rem; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 44px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    justify-content: space-between;
+  }
+  footer p { margin: 0; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="top">
+    <a class="mark" href="#top" aria-label="Oryntech Solutions, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#131A2E"/><circle cx="16" cy="16" r="8" fill="none" stroke="#F2B65A" stroke-width="3"/><circle cx="23" cy="9" r="3" fill="#E7EAF3"/></svg>
+      Oryntech Solutions
+    </a>
+    <nav aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#revive">Revive</a>
+      <a href="#how">How we work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Enterprise capability, <span>delivered by a lean human + AI unit.</span></h1>
+      <p>Oryntech Solutions runs your IT, automates the work that eats your week, and builds the software you can't buy off the shelf. A small senior team, extended by AI, so you get the depth of a large firm without the overhead.</p>
+      <div class="actions">
+        <a class="btn" href="#contact">Start a conversation</a>
+        <a class="link" href="#revive">See Revive, our reactivation system</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <h2>What we do</h2>
+      <p class="lede">Three services, one accountable team. Start with one and add the others as you grow.</p>
+      <ul class="svc">
+        <li>
+          <h3>Managed IT</h3>
+          <div>
+            <p>Devices, accounts, email, backups, security and the help desk. Monitored and patched, with a human who answers when something breaks.</p>
+            <p>Fixed monthly scope. No surprise tickets.</p>
+          </div>
+        </li>
+        <li>
+          <h3>AI Automation</h3>
+          <div>
+            <p>We map the repetitive work in your business, then wire it up: intake, follow-ups, reporting, scheduling, document handling. AI drafts and routes; people approve what matters.</p>
+            <p>Built on the tools you already pay for wherever possible.</p>
+          </div>
+        </li>
+        <li>
+          <h3>Custom Builds</h3>
+          <div>
+            <p>Internal tools, integrations, dashboards and client-facing apps. Full stack, from the database to the screen, with tests and documentation so it keeps working after we leave.</p>
+            <p>You own the code and the data.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="revive" id="revive">
+    <div class="wrap">
+      <div class="panel">
+        <div>
+          <div class="name"><i aria-hidden="true"></i>Revive</div>
+          <h2>Win back lost customers and rescue new leads, automatically.</h2>
+          <p>Every business has two leaks: the customers who quietly stopped coming, and the enquiries nobody followed up. <strong>Revive plugs both.</strong> It reads your customer records, works out who can be contacted and how, and runs the follow-up for you.</p>
+          <ul>
+            <li>Former customers get a short, personal win-back sequence with a real offer.</li>
+            <li>New enquiries get an instant reply and timed follow-ups, including a text back on missed calls.</li>
+            <li>Replies are read and answered. Anyone ready to come back is booked or handed to you.</li>
+            <li>Consent, opt-outs and sending windows are enforced on every message, so it stays compliant.</li>
+          </ul>
+          <p class="note">Runs inside your existing CRM. Priced per client, with a pilot first.</p>
+        </div>
+        <svg class="diagram" viewBox="0 0 440 300" role="img" aria-labelledby="dg-title dg-desc">
+          <title id="dg-title">How Revive works</title>
+          <desc id="dg-desc">Two inputs, lost customers and new leads, flow through Revive's message, reply and booking steps and come out as customers back in the door.</desc>
+          <rect class="node" x="10" y="48" width="130" height="44" rx="8"/>
+          <text x="75" y="75" text-anchor="middle">Lost customers</text>
+          <rect class="node" x="10" y="208" width="130" height="44" rx="8"/>
+          <text x="75" y="235" text-anchor="middle">New leads</text>
+          <path class="lane" d="M140 70 C 200 70, 200 150, 250 150"/>
+          <path class="lane" d="M140 230 C 200 230, 200 150, 250 150"/>
+          <path class="pulse" d="M140 70 C 200 70, 200 150, 250 150"/>
+          <path class="pulse" d="M140 230 C 200 230, 200 150, 250 150"/>
+          <circle cx="250" cy="150" r="46" class="node"/>
+          <circle cx="250" cy="150" r="46" class="ring"/>
+          <text x="250" y="138" text-anchor="middle">message</text>
+          <text x="250" y="156" text-anchor="middle" class="dim">reply</text>
+          <text x="250" y="174" text-anchor="middle" class="dim">book</text>
+          <path class="lane" d="M296 150 L 330 150"/>
+          <path class="pulse" d="M296 150 L 330 150"/>
+          <rect x="330" y="128" width="100" height="44" rx="8" class="hot"/>
+          <text x="380" y="155" text-anchor="middle" class="on-hot">Back in</text>
+          <text x="250" y="262" text-anchor="middle" class="dim">consent checked and opt-outs honoured at every step</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <h2>How we work</h2>
+      <p class="lede">Lean on purpose. The AI does the volume; the humans own the judgement and the outcome.</p>
+      <div class="cols">
+        <div>
+          <h3>One point of contact</h3>
+          <p>You deal with a person who knows your business, not a queue.</p>
+        </div>
+        <div>
+          <h3>Fixed scope, plain pricing</h3>
+          <p>Monthly retainers and quoted builds. Changes are agreed before they are billed.</p>
+        </div>
+        <div>
+          <h3>Your data stays yours</h3>
+          <p>We work inside your systems. Nothing is copied out, sold or used to train anything.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Talk to us</h2>
+      <p>Tell us what is slowing you down. We reply within one business day with a straight answer on whether we can help and what it would cost.</p>
+      <a class="mail" href="mailto:EMAIL_HERE">Email us</a>
+      <p class="note">Based in Ontario, Canada.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>An Habeyna company.</p>
+  <p>Oryntech Solutions</p>
+</footer>
+
+</body>
+</html>
